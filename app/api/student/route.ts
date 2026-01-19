@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import prisma from "@/prisma";
+import  prisma  from "@/prisma";
 
+// Force server-only runtime (important for App Router + Prisma)
 export const dynamic = "force-dynamic";
-
 
 export async function GET() {
   const students = await prisma.student.findMany();
