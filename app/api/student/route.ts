@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "@/prisma";
 
 export async function GET() {
-  const student = await prisma.student.findMany();
-  return NextResponse.json(student);
+  const students = await prisma.student.findMany();
+  return NextResponse.json(students);
 }
 
 export async function POST(req: Request) {
@@ -14,7 +12,7 @@ export async function POST(req: Request) {
   const newStudent = await prisma.student.create({
     data: {
       name: body.name,
-      enrollno:body.enrollno,
+      enrollno: body.enrollno,
     },
   });
 
