@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import prisma from "@/prisma";
 
+export const dynamic = "force-dynamic";
+
+
 export async function GET() {
   const students = await prisma.student.findMany();
   return NextResponse.json(students);
